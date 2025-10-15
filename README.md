@@ -8,5 +8,5 @@ fFormulir reservasi hotel Vincentius Kurniawan - 230712377
 - Pop up notifikasi keberhasilan setelah submit
 
 ## Demo
-Anda bisa mencoba formulir ini secara langsung di sini:
+coba liat formulir disini yakkkk:
 **[https://vincentius2004.github.io/Pemrograman-Web-Dasar/]**
