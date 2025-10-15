@@ -4,7 +4,7 @@ fFormulir reservasi hotel Vincentius Kurniawan - 230712377
 
 ## Fitur
 - Validasi email sederhana
-- Validasi tanggal check-out tidak boleh sebelum tanggal checkin
+- Validasi tanggal check out tidak boleh sebelum tanggal checkin
 - Pop up notifikasi keberhasilan setelah submit
 
 ## Demo
