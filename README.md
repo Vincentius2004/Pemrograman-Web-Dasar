@@ -1,1 +1,140 @@
 # Pemrograman-Web-Dasar
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Reservasi Hotel</title>
+    <link rel="stylesheet" href="gambar.css"> 
+</head>
+<body>
+
+    <form id="reservation-form" action="#" method="post" onsubmit="handleFormSubmit(event)" novalidate="novalidate">
+        
+        <h1>Formulir Reservasi Hotel</h1>
+
+        <fieldset>
+            <legend>Personal Data</legend>
+            <p>
+                <label for="name">1. Name</label><br />
+                <input type="text" id="name" name="name" required="required"/>
+            </p>
+            <p>
+                <label for="gender">2. Gender</label><br />
+                <input type="text" id="gender" name="gender" />
+            </p>
+            <p>
+                <label for="email">3. Email Address</label><br />
+                <input type="email" id="email" name="email" required="required"/>
+            </p>
+            <p>
+                <label for="telp">4. Telp Number</label><br />
+                <input type="tel" id="telp" name="telp" required="required"/>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Reservation Room Form</legend>
+            <p>
+                <label for="reservatorn_name">1. Reservation Name</label><br />
+                <input type="text" id="reservatorn_name" name="reservatorn_name" />
+            </p>
+            <p>
+                <label for="booking_date">2. Booking date</label><br />
+                <input type="date" id="booking_date" name="booking_date" required="required"/>
+            </p>
+            <p>
+                <label for="room_type">3. Room Type</label><br />
+                <select id="room_type" name="room_type">
+                    <option value="deluxe">Deluxe</option>
+                    <option value="suite">Suite</option>
+                    <option value="standard">Standard</option>
+                </select>
+            </p>
+            <p>
+                <label for="bed_type">4. Bed Type</label><br />
+                <select id="bed_type" name="bed_type">
+                    <option value="single">Single bed</option>
+                    <option value="double">Double bed</option>
+                    <option value="twin">Twin bed</option>
+                </select>
+            </p>
+            <p>
+                5. Breakfast<br />
+                <input type="radio" id="with_breakfast" name="breakfast" value="with" checked="checked" />
+                <label for="with_breakfast">With Breakfast</label>
+                <input type="radio" id="without_breakfast" name="breakfast" value="without" />
+                <label for="without_breakfast">Without Breakfast</label>
+            </p>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Payment</legend>
+            <p>
+                <label for="check_in">1. Check in date</label><br />
+                <input type="date" id="check_in" name="check_in" required="required" />
+            </p>
+            <p>
+                <label for="check_out">2. Check out date</label><br />
+                <input type="date" id="check_out" name="check_out" required="required" />
+            </p>
+            <p>
+                <label for="payment_method">3. Payment Method</label><br />
+                <select id="payment_method" name="payment_method">
+                    <option value="cash">Cash</option>
+                    <option value="credit_card">Qris</option>
+                    <option value="debit">Debit</option>
+                </select>
+            </p>
+        </fieldset>
+
+        <input type="submit" value="Submit Reservation" />
+
+    </form>
+    
+    <div id="success-popup">
+        <div class="popup-content">
+            <svg class="checkmark" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="checkmark-circle" cx="26" cy="26" r="25" stroke="#4CAF50" stroke-width="2"/>
+                <path class="checkmark-check" d="M14 27L22 35L38 19" stroke="#4CAF50" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p>Reservasi hotel berhasil!<br />Terima kasih atas pemesanan Anda.</p>
+            <button onclick="closePopup()">Turtup</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            var emailInput = document.getElementById('email').value;
+            if (!emailInput.includes('@')) {
+                alert("Error mas : harus menggunakan email");
+                return;
+            }
+
+            var checkinDateStr = document.getElementById('check_in').value;
+            var checkoutDateStr = document.getElementById('check_out').value;
+
+            if (checkinDateStr && checkoutDateStr) {
+                var checkinDate = new Date(checkinDateStr);
+                var checkoutDate = new Date(checkoutDateStr);
+
+                if (checkoutDate < checkinDate) {
+                    alert("Error: Tanggal check-out tidak boleh sebelum tanggal check-in.");
+                    return;
+                }
+            }
+            
+            document.getElementById('success popup').style.display = 'flex';
+        }
+        
+        function closePopup() {
+            document.getElementById('success-popup').style.display = 'none';
+            document.getElementById('reservation-form').reset();
+        }
+    </script>
+
+</body>
+</html>
